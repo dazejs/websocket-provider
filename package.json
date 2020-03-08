@@ -1,0 +1,56 @@
+{
+  "name": "@dazejs/websocket-provider",
+  "version": "0.0.1",
+  "description": "websocket support for dazejs",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "cross-env DAZE_ENV=dev DEBUG=dubbo-provider:* nodemon --signal SIGTERM --exec ts-node src/index.ts --source-map --preserve-symlinks",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prod": "cross-env DAZE_ENV=prod node dist/index.js",
+    "test": "jest --verbose --runInBand --forceExit",
+    "test:coverage": "jest --runInBand --forceExit --coverage",
+    "example": "cross-env DAZE_ENV=prod DEBUG=dubbo-provider:* nodemon --signal SIGTERM --exec ts-node example/index.ts --source-map --preserve-symlinks",
+    "commitlint": "commitlint -e $GIT_PARAMS",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dazejs/websocket-provider.git"
+  },
+  "keywords": [],
+  "author": "chanzewail@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dazejs/websocket-provider/issues"
+  },
+  "homepage": "https://github.com/dazejs/websocket-provider#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=10.15.0"
+  },
+  "peerDependencies": {
+    "@dazejs/framework": ">=2.5.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@dazejs/framework": "^2.5.0",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "@typescript-eslint/parser": "^2.22.0",
+    "commitlint": "^8.3.5",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2",
+    "ts-jest": "^25.2.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3"
+  }
+}

@@ -1,12 +1,13 @@
 {
   "name": "@dazejs/websocket-provider",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "websocket support for dazejs",
   "main": "dist/index.js",
   "scripts": {
     "start": "npm run dev",
     "dev": "cross-env DAZE_ENV=dev DEBUG=dubbo-provider:* nodemon --signal SIGTERM --exec ts-node src/index.ts --source-map --preserve-symlinks",
-    "build": "tsc",
+    "build": "npm run clear && tsc",
+    "clear": "rimraf dist/*",
     "watch": "tsc -w",
     "prod": "cross-env DAZE_ENV=prod node dist/index.js",
     "test": "jest --verbose --runInBand --forceExit",
@@ -53,7 +54,8 @@
     "jest": "25.1.0",
     "nodemon": "2.0.2",
     "reflect-metadata": "0.1.13",
-    "socket.io-client": "^2.3.0",
+    "rimraf": "3.0.2",
+    "socket.io-client": "2.3.0",
     "ts-jest": "25.2.1",
     "ts-node": "8.6.2",
     "typescript": "3.8.3"

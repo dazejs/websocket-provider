@@ -1,0 +1,39 @@
+name: Node CI
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  test:
+  
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [10, 12]
+   
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - name: Dependences Install
+      run: |
+        npm install
+        npm install codecov
+    - name: Run Test
+      run: |
+        npm run test:coverage
+    - name: Codecov
+      run: |
+        ./node_modules/.bin/codecov -t ${{ secrets.CODECOV_TOKEN }}
+

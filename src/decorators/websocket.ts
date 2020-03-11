@@ -1,4 +1,6 @@
 import { WSMetadata, SubscribesMetadata } from './interface';
+import { createInjectDecorator} from '@dazejs/framework';
+import * as symbols from '../symbols';
 
 export function port (port: number): ClassDecorator {
   return function <TFunction extends Function>(target: TFunction) {
@@ -22,3 +24,8 @@ export function subscribe(event: string): MethodDecorator {
     return descriptor;
   };
 }
+
+export const socket = createInjectDecorator(symbols.INJECTORS.SOCKET);
+export const message = createInjectDecorator(symbols.INJECTORS.MESSAGE);
+export const messages = createInjectDecorator(symbols.INJECTORS.MESSAGES);
+

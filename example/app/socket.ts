@@ -1,9 +1,9 @@
 import { Websocket, ws } from '../../src';
 
-@ws.port(8080)
+@ws.port(12453)
 export class Example extends Websocket {
   @ws.subscribe('channel')
-  handle(message: any) {
-    console.log(message);
+  handle(...msg: any) {
+    console.log(msg, 123);
   }
 }

@@ -5,6 +5,7 @@ import { WSMetadata, SubscribesMetadata } from './decorators/interface';
 // import socketIO from 'socket.io';
 // import { ws } from './decorators';
 import { Service } from './service';
+import { Event } from './event';
 
 
 export class Websocket {
@@ -20,63 +21,32 @@ export class Websocket {
  
   register<T extends WebsocketBase>(Component: T) {
     const wsMeta: WSMetadata = Reflect.getMetadata('ws', Component) ?? {};
-    const subscribes: SubscribesMetadata = Reflect.getMetadata('subscribes', Component);
+    const subscribesMeta: SubscribesMetadata = Reflect.getMetadata('subscribes', Component);
     const port = wsMeta.port ?? this.app.port;
 
-    if (this.services.has(port)) {
-      const service = this.services.get(port) as Service;
-      console.log(service, port);
-    } else {
-      const service = new Service(this.app, {
-        port
-      });
+    if (!this.services.has(port)) {
+      const service = new Service(this.app);
+      service.setPort(port);
       this.services.set(port, service);
-      console.log(service, port);
     }
 
     const service = this.services.get(port) as Service;
 
-    for (const [action, subscribe] of subscribes) {
-      for (const item of subscribe) {
-        service.addEvent(item.event, Component, action);
+    for (const [action, meta] of subscribesMeta) {
+      for (const subscribe of meta) {
+        const event = new Event(this.app);
+        event
+          .setName(subscribe.event)
+          .setComponent(Component)
+          .setAction(action);
+        service.addEvent(event);
       }
-      console.log(service, subscribe, 123);
     }
-    
   }
 
   listen() {
-    // for (const [port, server] of this.servers) {
-    //   const io = socketIO(server, {
-    //     // ...
-    //   });
-    //   io.on('connection', (socket) => {
-    //     socket.on('event', () => {
-          
-    //     });
-    //   });
-    //   if (port !== this.app.port) server.listen(port);
-    // }
-  }
-
-  // setupServer(port?: number) {
-  //   if (port && this.servers.has(port)) return this.servers.get(port);
-  //   if (this.isHttpExternal(port)) {
-  //     const io = socketIO(this.app.get('httpServer').getServer(), {
-  //       // ...
-  //     });
-  //     this.servers.set(port || this.app.port, io);
-  //     return io;
-  //   }
-  //   const io = socketIO(port, {
-  //     // ...
-  //   });
-  //   this.servers.set(port || this.app.port, io);
-  //   return io;
-  // }
-
-  isExternal(port?: number) {
-    if (!port || this.app.port === port) return false;
-    return true;
+    for (const [, service] of this.services) {
+      service.listen();
+    }
   }
 }

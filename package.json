@@ -33,30 +33,30 @@
     "node": ">=10.15.0"
   },
   "peerDependencies": {
-    "@dazejs/framework": ">=2.5.2",
+    "@dazejs/framework": ">=2.5.3",
     "reflect-metadata": ">=0.1.12"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
-    "@dazejs/framework": "^2.5.2",
-    "@types/jest": "^25.1.4",
-    "@types/node": "^13.9.0",
-    "@types/socket.io": "^2.1.4",
-    "@typescript-eslint/eslint-plugin": "^2.22.0",
-    "@typescript-eslint/parser": "^2.22.0",
-    "commitlint": "^8.3.5",
-    "cross-env": "^7.0.2",
-    "eslint": "^6.8.0",
-    "husky": "^4.2.3",
-    "jest": "^25.1.0",
-    "nodemon": "^2.0.2",
-    "reflect-metadata": "^0.1.13",
-    "ts-jest": "^25.2.1",
-    "ts-node": "^8.6.2",
-    "typescript": "^3.8.3"
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
+    "@dazejs/framework": "2.5.3",
+    "@types/jest": "25.1.4",
+    "@types/node": "13.9.0",
+    "@types/socket.io": "2.1.4",
+    "@typescript-eslint/eslint-plugin": "2.22.0",
+    "@typescript-eslint/parser": "2.22.0",
+    "commitlint": "8.3.5",
+    "cross-env": "7.0.2",
+    "eslint": "6.8.0",
+    "husky": "4.2.3",
+    "jest": "25.1.0",
+    "nodemon": "2.0.2",
+    "reflect-metadata": "0.1.13",
+    "ts-jest": "25.2.1",
+    "ts-node": "8.6.2",
+    "typescript": "3.8.3"
   },
   "dependencies": {
-    "socket.io": "^2.3.0"
+    "socket.io": "2.3.0"
   }
 }

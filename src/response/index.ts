@@ -17,6 +17,7 @@ export class Response {
 
   public setEvent(event: string) {
     this.event = event;
+    return this;
   }
 
   public getParameters() {

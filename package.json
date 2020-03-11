@@ -1,6 +1,6 @@
 {
   "name": "@dazejs/websocket-provider",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "websocket support for dazejs",
   "main": "dist/index.js",
   "scripts": {
@@ -43,6 +43,7 @@
     "@types/jest": "25.1.4",
     "@types/node": "13.9.0",
     "@types/socket.io": "2.1.4",
+    "@types/socket.io-client": "^1.4.32",
     "@typescript-eslint/eslint-plugin": "2.22.0",
     "@typescript-eslint/parser": "2.22.0",
     "commitlint": "8.3.5",
@@ -52,6 +53,7 @@
     "jest": "25.1.0",
     "nodemon": "2.0.2",
     "reflect-metadata": "0.1.13",
+    "socket.io-client": "^2.3.0",
     "ts-jest": "25.2.1",
     "ts-node": "8.6.2",
     "typescript": "3.8.3"

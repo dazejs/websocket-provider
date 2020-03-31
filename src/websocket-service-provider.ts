@@ -1,4 +1,4 @@
-import { Provider, Loader, inject, Metadata, provide, Application } from '@dazejs/framework';
+import { Provider, Loader, inject, provide, Application } from '@dazejs/framework';
 import { Websocket } from './websocket-service';
 import * as symbols from './symbols';
 import sio from 'socket.io';
@@ -37,7 +37,7 @@ export class WebsocketServiceProvider extends Provider {
     const ws = this.app.get<Websocket>('websocket');
     const Components = this.loader.getComponentsByType('websocket') || [];
     for (const Component of Components) {
-      const name = Metadata.get('name', Component);
+      const name = Reflect.getMetadata('name', Component);
       this.app.multiton(Component, Component);
       if (name) {
         this.app.multiton(`websocket.${name}`, (...args: any[]) => {

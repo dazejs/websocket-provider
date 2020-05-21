@@ -1,10 +1,10 @@
-import { Provider, Loader, inject, provide, Application } from '@dazejs/framework';
+import { BaseProvider, Loader, inject, provide, Application } from '@dazejs/framework';
 import { Websocket } from './websocket-service';
 import * as symbols from './symbols';
 import sio from 'socket.io';
 import { Response } from './response';
 
-export class WebsocketServiceProvider extends Provider {
+export class WebsocketServiceProvider extends BaseProvider {
   @inject('loader') loader: Loader;
 
   @provide('websocket')
@@ -41,7 +41,7 @@ export class WebsocketServiceProvider extends Provider {
       this.app.multiton(Component, Component);
       if (name) {
         this.app.multiton(`websocket.${name}`, (...args: any[]) => {
-          return this.app.get(Provider, args);
+          return this.app.get(Component, args);
         }, true);
       }
       ws.register(Component);

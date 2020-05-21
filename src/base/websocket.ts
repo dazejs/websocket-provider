@@ -2,7 +2,7 @@ import { componentType, injectable } from '@dazejs/framework';
 import { Response } from '../response';
 
 @componentType('websocket')
-@injectable()
+@injectable
 export class Websocket {
   __context__: any;
 

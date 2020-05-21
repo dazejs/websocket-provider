@@ -1,11 +1,8 @@
 import { Application } from '@dazejs/framework';
 import { Websocket as WebsocketBase } from './base';
-import { WSMetadata, SubscribesMetadata } from './decorators/interface';
-// import * as http from 'http';
-// import socketIO from 'socket.io';
-// import { ws } from './decorators';
-import { Service } from './service';
+import { SubscribesMetadata, WSMetadata } from './decorators/interface';
 import { Event } from './event';
+import { Service } from './service';
 
 
 export class Websocket {

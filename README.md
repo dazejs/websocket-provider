@@ -35,12 +35,13 @@ export default {
 
 ### 定义 `websocket` 服务
 
-通过继承 `Websock` 基础类来表示这是一个 `websocket` 服务
+通过使用 `@websock` 装饰器来表示这是一个 `websocket` 服务
 
 ```ts
-import { Websocket } from '@dazejs/websocket-provider';
+import { websock } from '@dazejs/websocket-provider';
 
-export class Example extends Websocket {
+@websock()
+export class Example {
 
 }
 ```
@@ -50,9 +51,10 @@ export class Example extends Websocket {
 通过继承 `ws.subscribe()` 装饰器来监听事件
 
 ```ts
-import { Websocket, ws } from '@dazejs/websocket-provider';
+import { BaseWebsocket, ws, websock } from '@dazejs/websocket-provider';
 
-export class Example extends Websocket {
+@websock()
+export class Example extends BaseWebsocket {
   @ws.subscribe('event')
   handle() {
     // ...

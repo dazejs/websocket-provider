@@ -3,7 +3,7 @@ import { Response } from '../response';
 
 @componentType('websocket')
 @injectable
-export class Websocket {
+export class BaseWebsocket {
   __context__: any;
 
   get socket() {

@@ -1,5 +1,7 @@
-import * as ws from './websocket';
+import * as ws from './ws';
 
 export {
   ws
 };
+
+export * from './websocket'

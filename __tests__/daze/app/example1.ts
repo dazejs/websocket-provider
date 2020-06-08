@@ -1,6 +1,8 @@
-import { Websocket, ws } from '../../../src';
+import { BaseWebsocket, ws, websocket } from '../../../src';
 
-export class Example1 extends Websocket {
+
+@websocket()
+export class Example1 extends BaseWebsocket {
   @ws.subscribe('event1')
   index(msg: string) {
     return this.response().setEvent('event2').setParameters(`hello ${msg}`);

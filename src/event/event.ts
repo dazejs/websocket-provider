@@ -1,4 +1,4 @@
-import { Websocket as WebsocketBase} from '../base';
+import { BaseWebsocket as WebsocketBase} from '../base';
 import { Application } from '@dazejs/framework';
 import sio from 'socket.io';
 

@@ -1,5 +1,5 @@
 import { Application } from '@dazejs/framework';
-import { Websocket as WebsocketBase } from './base';
+import { BaseWebsocket as WebsocketBase } from './base';
 import { SubscribesMetadata, WSMetadata } from './decorators/interface';
 import { Event } from './event';
 import { Service } from './service';

@@ -1,6 +1,6 @@
 {
   "name": "@dazejs/websocket-provider",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "websocket support for dazejs",
   "main": "dist/index.js",
   "scripts": {

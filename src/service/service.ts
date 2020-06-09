@@ -31,11 +31,11 @@ export class Service {
     return this;
   }
 
-  private handleEvent(io: SocketIO.Server) {
+  private  handleEvent(io: SocketIO.Server) {
     io.on('connection', (socket) => {
       for (const event of this.events) {
-        socket.on(event.getName(), (...args: any[]) => {
-          const res = event.invoke(socket, ...args);
+        socket.on(event.getName(), async (...args: any[]) => {
+          const res = await event.invoke(socket, ...args);
           return this.handleResponse(socket, res);
         });
       }

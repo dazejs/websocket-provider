@@ -18,9 +18,9 @@ export class Websocket {
  
   register<T extends WebsocketBase>(Component: T) {
     const wsMeta: WSMetadata = Reflect.getMetadata('ws', Component) ?? {};
+    
     const subscribesMeta: SubscribesMetadata = Reflect.getMetadata('subscribes', Component) || new Map();
     const port = wsMeta.port ?? this.app.port;
-
     if (!this.services.has(port)) {
       const service = new Service(this.app);
       service.setPort(port);

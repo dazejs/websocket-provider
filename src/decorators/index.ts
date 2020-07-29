@@ -4,4 +4,4 @@ export {
   ws
 };
 
-export * from './websocket'
+export * from './websocket';

@@ -1,5 +1,5 @@
 import { WSMetadata, SubscribesMetadata } from './interface';
-import { createInjectDecorator} from '@dazejs/framework';
+import { createCustomDecorator } from '@dazejs/framework';
 import * as symbols from '../symbols';
 
 export function port (port: number): ClassDecorator {
@@ -25,7 +25,7 @@ export function subscribe(event: string): MethodDecorator {
   };
 }
 
-export const socket = createInjectDecorator(symbols.INJECTORS.SOCKET);
-export const message = createInjectDecorator(symbols.INJECTORS.MESSAGE);
-export const messages = createInjectDecorator(symbols.INJECTORS.MESSAGES);
+export const socket = createCustomDecorator(symbols.INJECTORS.SOCKET);
+export const message = createCustomDecorator(symbols.INJECTORS.MESSAGE);
+export const messages = createCustomDecorator(symbols.INJECTORS.MESSAGES);
 

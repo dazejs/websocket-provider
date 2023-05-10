@@ -1,51 +1,52 @@
-import { BaseProvider, Loader, provide, Application, disable } from '@dazejs/framework';
+import { Provider, Loader, Provide, Application, Disable, app } from '@dazejs/framework';
 import { Websocket } from './websocket-service';
 import * as symbols from './symbols';
 import sio from 'socket.io';
 import { Response } from './response';
 
-export class WebsocketServiceProvider extends BaseProvider {
+@Provider()
+export class WebsocketServiceProvider {
 
-  @provide('websocket')
-  @disable
+  @Provide('websocket')
+  @Disable
   _websocket(app: Application) {
     return new Websocket(app);
   }
 
-  @provide(symbols.INJECTORS.SOCKET, false)
-  @disable
+  @Provide(symbols.INJECTORS.SOCKET, false)
+  @Disable
   _socket(socket: sio.Socket) {
     return socket;
   }
 
-  @provide(symbols.INJECTORS.MESSAGE, false)
-  @disable
+  @Provide(symbols.INJECTORS.MESSAGE, false)
+  @Disable
   _message(_socket: sio.Socket, args: any[]) {
     const [msg] = args;
     return msg;
   }
 
-  @provide(symbols.INJECTORS.MESSAGES, false)
-  @disable
+  @Provide(symbols.INJECTORS.MESSAGES, false)
+  @Disable
   _messages(_socket: sio.Socket, args: any[]) {
     return args;
   }
 
-  @provide(symbols.INJECTORS.RESPONSE, false)
-  @disable
+  @Provide(symbols.INJECTORS.RESPONSE, false)
+  @Disable
   _response() {
     return new Response();
   }
 
   launch() {
-    const ws = this.app.get<Websocket>('websocket');
-    const Components = this.app.get<Loader>('loader').getComponentsByType('websocket') || [];
+    const ws = app().get<Websocket>('websocket');
+    const Components = app().get<Loader>('loader').getComponentsByType('websocket') || [];
     for (const Component of Components) {
       const name = Reflect.getMetadata('name', Component);
-      this.app.multiton(Component, Component);
+      app().multiton(Component, Component);
       if (name) {
-        this.app.multiton(`websocket.${name}`, (...args: any[]) => {
-          return this.app.get(Component, args);
+        app().multiton(`websocket.${name}`, (...args: any[]) => {
+          return app().get(Component, args);
         }, true);
       }
       ws.register(Component);

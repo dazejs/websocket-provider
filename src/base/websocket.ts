@@ -1,8 +1,8 @@
-import { componentType, injectable } from '@dazejs/framework';
+import { ComponentType, Injectable } from '@dazejs/framework';
 import { Response } from '../response';
 
-@componentType('websocket')
-@injectable
+@ComponentType('websocket')
+@Injectable
 export class BaseWebsocket {
   __context__: any;
 

@@ -5,7 +5,7 @@
  * https: //opensource.org/licenses/MIT
  */
 
-import { injectable } from '@dazejs/framework';
+import { Injectable } from '@dazejs/framework';
 import { WSMetadata } from './interface';
 
 interface WebsocketOptions {
@@ -19,7 +19,7 @@ interface WebsocketOptions {
  */
 export const websocket = function (options?: WebsocketOptions): ClassDecorator {
   return function (constructor) {
-    injectable(constructor);
+    Injectable(constructor);
     const meta: WSMetadata = Reflect.getMetadata('ws', constructor) ?? {};
     if (options?.port) meta.port = options.port;
     Reflect.defineMetadata('type', 'websocket', constructor);

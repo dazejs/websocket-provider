@@ -1,6 +1,6 @@
 {
   "name": "@dazejs/websocket-provider",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "websocket support for dazejs",
   "main": "dist/index.js",
   "scripts": {
@@ -13,8 +13,7 @@
     "test": "jest --verbose --runInBand --forceExit",
     "test:coverage": "jest --runInBand --forceExit --coverage",
     "example": "cross-env DAZE_ENV=prod DEBUG=websocket-provider:* nodemon --signal SIGTERM --exec ts-node example/index.ts --source-map --preserve-symlinks",
-    "commitlint": "commitlint -e $GIT_PARAMS",
-    "prepublish": "npm run build"
+    "commitlint": "commitlint -e $GIT_PARAMS"
   },
   "repository": {
     "type": "git",
@@ -34,13 +33,13 @@
     "node": ">=10.15.0"
   },
   "peerDependencies": {
-    "@dazejs/framework": ">=3.4.1",
+    "@dazejs/framework": ">=5.0.0",
     "reflect-metadata": ">=0.1.12"
   },
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
-    "@dazejs/framework": "3.4.1",
+    "@dazejs/framework": "^5.0.1",
     "@types/jest": "25.1.4",
     "@types/node": "13.9.2",
     "@types/socket.io": "2.1.4",
@@ -57,8 +56,8 @@
     "rimraf": "3.0.2",
     "socket.io-client": "2.3.0",
     "ts-jest": "25.2.1",
-    "ts-node": "8.7.0",
-    "typescript": "3.8.3"
+    "ts-node": "10.9.1",
+    "typescript": "4.9.4"
   },
   "dependencies": {
     "socket.io": "2.3.0"

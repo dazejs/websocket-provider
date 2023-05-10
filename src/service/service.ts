@@ -58,7 +58,7 @@ export class Service {
     if (this.port === this.app.port) {
       const io = sio();
       // 使用应用的 server
-      io.attach(this.app.get('httpServer').getServer());
+      io.attach(this.app.get('appServer').getServer());
       this.handleEvent(io);
     } else {
       const io = sio();
